@@ -2,11 +2,13 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <match-summary></match-summary>
+    <match-events></match-events>
   </div>
 </template>
 
 <script>
 import MatchSummary from './MatchSummary'
+import MatchEvents from './MatchEvents'
 export default {
   name: 'WCViewer',
   data () {
@@ -15,7 +17,8 @@ export default {
     }
   },
   components: {
-    MatchSummary
+    MatchSummary,
+    MatchEvents
   }
 }
 </script>
