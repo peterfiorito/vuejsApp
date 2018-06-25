@@ -137,4 +137,187 @@ res.send(
 )
 })
 
+app.get('/events', (req, res) => {
+    res.send(
+      [{
+        "team1": {
+          "teamName": "Russia",
+          "events": [
+            {
+              "minute": "0'",
+              "eventName": "Game-Start"
+            },
+            {
+              "minute": "11'",
+              "players": [
+                {
+                  "playerName": "Aleksandr Golovin"
+                }
+              ],
+              "eventName": "Assist-Goal"
+            },
+            {
+              "minute": "23'",
+              "players": [
+                {
+                  "playerName": "Denis Cheryshev"
+                }
+              ],
+              "eventName": "In"
+            },
+            {
+              "minute": "23'",
+              "players": [
+                {
+                  "playerName": "Alan Dzagoev"
+                }
+              ],
+              "eventName": "Out"
+            },
+            {
+              "minute": "42'",
+              "players": [
+                {
+                  "playerName": "Roman Zobnin"
+                }
+              ],
+              "eventName": "Assist-Goal"
+            },
+            {
+              "minute": "64'",
+              "players": [
+                {
+                  "playerName": "Aleksandr Samedov"
+                }
+              ],
+              "eventName": "Out"
+            },
+            {
+              "minute": "64'",
+              "players": [
+                {
+                  "playerName": "Daler Kuzyaev"
+                }
+              ],
+              "eventName": "In"
+            },
+            {
+              "minute": "69'",
+              "players": [
+                {
+                  "playerName": "Fedor Smolov"
+                }
+              ],
+              "eventName": "Out"
+            },
+            {
+              "minute": "69'",
+              "players": [
+                {
+                  "playerName": "Artem Dzyuba"
+                }
+              ],
+              "eventName": "In"
+            },
+            {
+              "minute": "71'",
+              "players": [
+                {
+                  "playerName": "Aleksandr Golovin"
+                }
+              ],
+              "eventName": "Assist-Goal"
+            },
+            {
+              "minute": "87'",
+              "players": [
+                {
+                  "playerName": "Aleksandr Golovin"
+                }
+              ],
+              "eventName": "Yellow-Card"
+            }
+          ]
+        },
+        "team2": {
+          "teamName": "Saudi Arabia",
+          "events": [
+            {
+              "minute": "0'",
+              "eventName": "Game-Start"
+            },
+            {
+              "minute": "63'",
+              "players": [
+                {
+                  "playerName": "Abdullah Otayf"
+                }
+              ],
+              "eventName": "Out"
+            },
+            {
+              "minute": "63'",
+              "players": [
+                {
+                  "playerName": "Fahad Al Muwallad"
+                }
+              ],
+              "eventName": "In"
+            },
+            {
+              "minute": "68'",
+              "eventName": "Game-Change"
+            },
+            {
+              "minute": "73'",
+              "players": [
+                {
+                  "playerName": "Yahya Al Shehri"
+                }
+              ],
+              "eventName": "Out"
+            },
+            {
+              "minute": "73'",
+              "players": [
+                {
+                  "playerName": "Hattan Bahebri"
+                }
+              ],
+              "eventName": "In"
+            },
+            {
+              "minute": "84'",
+              "players": [
+                {
+                  "playerName": "Mohammed Al Sahlawi"
+                }
+              ],
+              "eventName": "Out"
+            },
+            {
+              "minute": "84'",
+              "players": [
+                {
+                  "playerName": "Mohannad Aseri"
+                }
+              ],
+              "eventName": "In"
+            },
+            {
+              "minute": "93'",
+              "players": [
+                {
+                  "playerName": "Taiseer Al Jassam"
+                }
+              ],
+              "eventName": "Yellow-Card"
+            }
+          ]
+        }
+      }
+      ]
+    )
+  })
+
 app.listen(process.env.PORT || 8081)
