@@ -318,6 +318,50 @@ app.get('/events', (req, res) => {
       }
       ]
     )
-  })
+})
+
+app.get('/goals', (req, res) => {
+  res.send(
+    [{
+      "team1": {
+        "teamName": "Russia",
+        "goals": [
+          {
+            "minute": "12'",
+            "player": "Yuri Gazinskiy",
+            "isFromCorner": true,
+            "isHead": true
+          },
+          {
+            "minute": "42'",
+            "player": "Denis Cheryshev",
+            "isLeftFoot": true
+          },
+          {
+            "minute": "71'",
+            "player": "Artem Dzyuba",
+            "isHead": true
+          },
+          {
+            "minute": "91'",
+            "player": "Denis Cheryshev",
+            "isLeftFoot": true
+          },
+          {
+            "minute": "94'",
+            "player": "Aleksandr Golovin",
+            "isFreekick": true,
+            "isRightFoot": true
+          }
+        ]
+      },
+      "team2": {
+        "teamName": "Saudi Arabia",
+        "goals": []
+      }
+    }
+    ]
+  )
+})
 
 app.listen(process.env.PORT || 8081)

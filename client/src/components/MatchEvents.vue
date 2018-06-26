@@ -2,24 +2,35 @@
   <div class="match-event-envelope">
     <h3>{{placeholder}}</h3>
     <div class="events">
-        <div v-for="event in events" v-bind:key="event.id" class="event-item">
+        <div v-for="event in timelineData" v-bind:key="event.id" class="event-item">
             <div class="back-cell">
                 <div class="event-dot">
                 </div>
             </div>
-            <span>{{event.minute+ ' ' + event.eventName}}</span>
+            <!-- <div>{{event}}</div> -->
+            <div>
+              <span v-if="event.eventName != undefined">{{event.eventName + ' - ' + event.minute}}</span>
+              <span v-if="event.eventName != 'Game-Start'">{{event.teamName}}</span>
+              <span v-if="event.eventName == 'Sustitution'">Player in: {{event.playerIn}} - Player out: {{event.playerOut}}</span>
+              <span v-else-if="event.eventName == undefined">Goal! {{event.player}}</span>
+            </div>
         </div>
     </div>
   </div>
 </template>
 <script>
 import MatchEventService from '@/services/MatchEventService'
+import MatchGoalsService from '@/services/MatchGoalsService'
+import { eventgoals } from '@/mixin/EventService'
 export default {
   name: 'MatchEvents',
+  mixins: [eventgoals],
   data () {
     return {
       placeholder: 'Match Events',
-      events: []
+      events: [],
+      goals: [],
+      timelineData: []
     }
   },
   mounted () {
@@ -27,19 +38,13 @@ export default {
   },
   methods: {
     async getEventData () {
-      const eventData = await MatchEventService.fetchEvents()
-      var obj = eventData.data[0]
-      this.parser(obj)
-    },
-    async parser (obj) {
-      var item = []
-      Object.keys(obj).forEach(function (k, i) {
-        item[i] = (obj[k].events)
-      })
-      var merged = [].concat.apply([], item)
-      merged.shift()
-      merged.sort((a, b) => parseFloat(a.minute) - parseFloat(b.minute))
-      this.events = merged
+      const eventData = MatchEventService.fetchEvents()
+      const goalData = MatchGoalsService.fetchGoals()
+      const res = await Promise.all([eventData, goalData])
+      const events = res[0].data[0]
+      const goals = res[1].data[0]
+      const mergedData = await this.totalData(events, goals, this.parser, this.bubble, this.dupChecker)
+      this.timelineData = mergedData
     }
   }
 }
