@@ -1,20 +1,20 @@
 <template>
   <div class="envelope">
     <h1>Match Stats</h1>
-    <div class="match-flag">
-        <img src="../assets/russia.png">
-    </div>
     <div class="match">
         <div v-for="match in matches" v-bind:key="match.id" class="match-item">
+            <div v-if="match.teamName == 'Russia'" class="match-flag" v-on:click="getStats(match.teamName)">
+                <img src="../assets/russia.png">
+            </div>
+            <div v-else-if="match.teamName == 'Saudi Arabia'" class="match-flag" v-on:click="getStats(match.teamName)">
+                <img src="../assets/saudi-arabia.png">
+            </div>
             <span class="team-name" v-on:click="getStats(match.teamName)">{{ match.teamName }}</span>
             <span class="score">{{match.goals.length}}</span>
             <div v-for="goal in match.goals" v-bind:key='goal.id' class="goal-list">
                 <span>{{goal.minute + ' ' + goal.player}}</span>
             </div>
         </div>
-    </div>
-    <div class="match-flag">
-        <img src="../assets/saudi-arabia.png">
     </div>
     <div v-show="teamStats" class="stats-envelope">
             <div class="close"><span class="close-cross" v-on:click="teamStats = false">X</span></div>
@@ -65,6 +65,7 @@ export default {
 }
 .match-flag{
     display: inline-flex;
+    cursor: pointer;
 }
 .match-flag img{
     height: 1.5em;

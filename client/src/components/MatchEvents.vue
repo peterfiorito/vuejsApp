@@ -9,11 +9,11 @@
             </div>
             <!-- <div>{{event}}</div> -->
             <div>
-              <span v-if="event.eventName != undefined">{{event.eventName + ' - ' + event.minute}}</span>
+              <span v-if="event.eventName != undefined">{{event.eventName}} - {{event.minute}}</span>
               <span v-if="event.eventName != 'Game-Start'">{{event.teamName}}</span>
               <span v-if="event.eventName == 'Sustitution'">Player in: {{event.playerIn}} - Player out: {{event.playerOut}}</span>
               <span v-else-if="event.eventName == 'Assist-Goal'">Player: {{event.players[0].playerName}}</span>
-              <span v-else-if="event.eventName == undefined">Goal! {{event.player}}</span>
+              <span v-else-if="event.eventName == undefined">Goal! Scored by {{event.player}}</span>
             </div>
         </div>
     </div>
