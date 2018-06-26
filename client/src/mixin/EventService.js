@@ -91,7 +91,6 @@ function dupChecker (obj) {
 }
 
 async function totalData (events, goals, parser, bubble, dupChecker) {
-  debugger
   let parseObj = parser(events, goals)
   let sortedObj = bubble(parseObj)
   let filterobj = dupChecker(sortedObj)
