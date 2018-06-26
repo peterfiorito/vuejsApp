@@ -11,9 +11,12 @@ module.exports = {
     browser
       .url(devServer)
       .waitForElementVisible('#app', 5000)
-      .assert.elementPresent('.hello')
-      .assert.containsText('h1', 'Welcome to Your Vue.js App')
-      .assert.elementCount('img', 1)
+      .assert.elementPresent('h1')
+      .assert.containsText('h1', 'World Cup Stats Viewer')
+      .waitForElementVisible('.match-event-envelope', 3000)
+      .click('.team-name')
+      .pause(1000)
+      .waitForElementVisible('.stats-envelope', 5000)
       .end()
   }
 }
