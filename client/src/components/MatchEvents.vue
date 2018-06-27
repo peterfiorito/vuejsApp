@@ -16,7 +16,7 @@
               <div v-else-if="event.eventName == 'Assist-Goal'">Player: {{event.players[0].playerName}}</div>
               <span v-else-if="event.eventName == undefined">
                 <img class="ball" src="../assets/football.png">
-                <b>Goal!</b> 
+                <b>Goal!</b>
                 <div>Scored by {{event.player}}</div>
               </span>
             </div>
