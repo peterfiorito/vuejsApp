@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import MatchSummary from '@/components/MatchSummary'
 
-describe('Home.vue', () => {
+describe('Match Summary', () => {
   it('should render Match Stats', () => {
     const Constructor = Vue.extend(MatchSummary)
     const vm = new Constructor().$mount()

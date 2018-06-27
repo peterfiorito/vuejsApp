@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import MatchEvents from '@/components/MatchEvents'
 
-describe('Home.vue', () => {
+describe('Match Events', () => {
   it('should render Match Events', () => {
     const Constructor = Vue.extend(MatchEvents)
     const vm = new Constructor().$mount()
