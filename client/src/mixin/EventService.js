@@ -94,7 +94,6 @@ async function totalData (events, goals, parser, bubble, dupChecker) {
   let parseObj = parser(events, goals)
   let sortedObj = bubble(parseObj)
   let filterobj = dupChecker(sortedObj)
-  console.log(filterobj)
   return filterobj
 }
 

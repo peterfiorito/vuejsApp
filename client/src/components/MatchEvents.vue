@@ -3,19 +3,25 @@
     <h3>{{placeholder}}</h3>
     <div class="events">
         <div v-for="event in timelineData" v-bind:key="event.id" class="event-item">
+            <span class="minute">{{event.minute}}</span>
             <div class="back-cell">
                 <div class="event-dot">
                 </div>
             </div>
             <!-- <div>{{event}}</div> -->
-            <div>
-              <span v-if="event.eventName != undefined">{{event.eventName}} - {{event.minute}}</span>
+            <div class="event-data">
+              <span v-if="event.eventName != undefined" class="event-name"><b>{{event.eventName}}</b></span>
               <span v-if="event.eventName != 'Game-Start'">{{event.teamName}}</span>
-              <span v-if="event.eventName == 'Sustitution'">Player in: {{event.playerIn}} - Player out: {{event.playerOut}}</span>
-              <span v-else-if="event.eventName == 'Assist-Goal'">Player: {{event.players[0].playerName}}</span>
-              <span v-else-if="event.eventName == undefined">Goal! Scored by {{event.player}}</span>
+              <div v-if="event.eventName == 'Sustitution'">Player in: {{event.playerIn}} - Player out: {{event.playerOut}}</div>
+              <div v-else-if="event.eventName == 'Assist-Goal'">Player: {{event.players[0].playerName}}</div>
+              <span v-else-if="event.eventName == undefined">
+                <img class="ball" src="../assets/football.png">
+                <b>Goal!</b> 
+                <div>Scored by {{event.player}}</div>
+              </span>
             </div>
         </div>
+        <div class="end">End of match!</div>
     </div>
   </div>
 </template>
@@ -55,13 +61,21 @@ export default {
     margin-top: 1em;
     border: 1px solid gray;
     border-radius: 10px;
+    max-width: 50em;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
 }
 .events{
     margin-bottom: 1em;
+    margin-left: 1em;
 }
 .event-item{
     display: flex;
     flex-direction: row;
+}
+.event-item:first-child{
+  margin-left: 0.55em;
 }
 .event-dot{
     height: 1em;
@@ -69,9 +83,24 @@ export default {
     background-color: #2da719;
     border-radius: 50%;
     display: inline-block;
-    margin: 0.5em 1em 0.5em 1em;
+}
+.minute{
+  font-weight: bold;
+}
+.event-data{
+  padding: 0 0 1em 1em;
+  text-align: left;
+}
+.ball{
+  width: 1em;
+  height: auto;
 }
 .back-cell{
-    background: linear-gradient(to right,transparent 0%, transparent calc(50% - 0.05em), green calc(50% - 0.05em), green calc(50% + 0.05em), transparent calc(50% + 0.05em), transparent 100%);
+  background: linear-gradient(to right,transparent 0%, transparent calc(50% - 0.05em), green calc(50% - 0.05em), green calc(50% + 0.05em), transparent calc(50% + 0.05em), transparent 100%);
+  padding-bottom: 1em;
+}
+.end{
+  text-align: left;
+  font-weight: bold;
 }
 </style>

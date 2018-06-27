@@ -1,6 +1,6 @@
 <template>
   <div class="envelope">
-    <h1>Match Stats</h1>
+    <h1 class="title">Match Stats</h1>
     <div class="match">
         <div v-for="match in matches" v-bind:key="match.id" class="match-item">
             <div v-if="match.teamName == 'Russia'" class="match-flag" v-on:click="getStats(match.teamName)">
@@ -9,8 +9,8 @@
             <div v-else-if="match.teamName == 'Saudi Arabia'" class="match-flag" v-on:click="getStats(match.teamName)">
                 <img src="../assets/saudi-arabia.png">
             </div>
-            <span class="team-name" v-on:click="getStats(match.teamName)">{{ match.teamName }}</span>
             <span class="score">{{match.goals.length}}</span>
+            <div class="team-name" v-on:click="getStats(match.teamName)">{{ match.teamName }}</div>
             <div v-for="goal in match.goals" v-bind:key='goal.id' class="goal-list">
                 <span>{{goal.minute + ' ' + goal.player}}</span>
             </div>
@@ -55,10 +55,21 @@ export default {
 }
 </script>
 <style scoped>
+.title{
+    text-transform: uppercase;
+    color: white;
+}
 .envelope{
     border: 1px solid #e8e8e8;
     border-radius: 20px;
     background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 61%, rgba(237,237,237,1) 100%);
+    background-image: url(/static/backgroundLight.jpg);
+    background-repeat: no-repeat;
+    background-size: 800px;
+    background-position: center;
+    background-position-y: 0;
+    max-width: 50em;
+    margin: auto;
 }
 .match{
     display: inline-flex;
@@ -68,7 +79,7 @@ export default {
     cursor: pointer;
 }
 .match-flag img{
-    height: 1.5em;
+    height: 1.3em;
     border: 1px solid #6d6d6d;
 }
 .match-item{
@@ -76,6 +87,8 @@ export default {
 }
 .team-name{
     font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 .team-name:hover{
     cursor: pointer;
@@ -84,17 +97,19 @@ export default {
     background-color: white;
     font-size: 1.5em;
     border: 1px #cccaca solid;
-    padding: 0 0.5em;
-    border-radius: 10px;
+    padding: 0 0.45em;
+    border-radius: 50%;
+    height: 1em;
+    width: 1em;
 }
 .goal-list{
     padding-top: 0.5em;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 .stats-envelope{
-    width: 98%;
-    margin: 0.5em auto;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 .close{
     margin: 1em;
@@ -106,6 +121,7 @@ export default {
     margin-top: 1em;
     cursor: pointer;
     font-weight: bold;
+    text-align: left;
 }
 .stats{
     padding: 0.5em;
