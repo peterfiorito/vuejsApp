@@ -1,4 +1,4 @@
-SendCloud - Vuejs App
+Vuejs App
 ======================
 
 Vuejs App to display WC match stats served from a mocked server.
