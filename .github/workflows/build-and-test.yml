@@ -22,6 +22,6 @@ jobs:
         cd ./client
         npm install
         npm run build
-        npm test
+        npm run unit
       env:
         CI: true
