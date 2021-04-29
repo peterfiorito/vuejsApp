@@ -1,0 +1,26 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/client"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: webpack-bundle-analyzer
+    versions:
+    - 4.3.0
+  - dependency-name: karma
+    versions:
+    - 5.1.0
+  - dependency-name: shelljs
+    versions:
+    - 0.8.3
+- package-ecosystem: npm
+  directory: "/server"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: nodemon
+    versions:
+    - 2.0.6
